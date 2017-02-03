@@ -1,4 +1,4 @@
-const dbconnect = require("../dbconnect").connection;
+const dbconnect = require("./dbconnect").connection;
 const fs = require("fs");
 const arg = process.argv;//Записываем все аргументы принятые из командной строки
 const VERSION_DIRECTIONAL = "db_version/";

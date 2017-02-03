@@ -1,0 +1,7 @@
+{
+  "port": 8888,
+  "host": "localhost",
+  "db": "protondb",
+  "dbuser": "protondb",
+  "dbpass": "protondb"
+}

@@ -1,12 +1,13 @@
 const mysql = require("mysql");
+const config = require("./../config/index");
 
 //Экспортируемый объект.
 //Конфигурация подключения к базе данных
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'protondb',
-    password: 'protondb',
-    database: 'protondb',
+    host: config.get("host"),
+    user: config.get("dbuser"),
+    password: config.get("dbpass"),
+    database: config.get("db"),
     multipleStatements: true
 });
 

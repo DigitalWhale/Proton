@@ -1,21 +1,15 @@
 
-const PORT = 8888;
 const http = require("http");
 const url = require("url");
-const router = require("./router");
-const dbconnect = require("./dbconnect").connection;
+const app = require("./app");
+let log = require('./libs/log')(module);
+//const router = require("./router");
 
 //Экспортируемая функция запуска сервера.
-// Принимает параметром функцию маршрутизации из роутера
-var start = function(route){
-    http.createServer(function (request, response) {
-        var pathname = url.parse(request.url).pathname;
-
-    }).listen(PORT);
-
-
-
-    console.log("Server started");
+let start = () => {
+    http.createServer(app).listen(app.get("port"), () => {
+        log.info("Express server listenned on a port" + app.get("port"));
+    });
 };
 
 exports.start = start;

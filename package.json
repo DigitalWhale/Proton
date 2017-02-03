@@ -1,24 +1,20 @@
 {
   "name": "proton",
   "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \\\"Error: no test specified\\\" && exit 1",
-    "start": "node server.js"
+    "start": "node ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DigitalWhale/Proton.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/DigitalWhale/Proton/issues"
-  },
-  "homepage": "https://github.com/DigitalWhale/Proton#readme",
   "dependencies": {
+    "body-parser": "~1.16.0",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.0",
+    "express": "~4.14.1",
+    "jade": "~1.11.0",
+    "morgan": "~1.7.0",
     "mysql": "2.13.0",
-    "sql": "0.73.0"
+    "nconf": "0.8.4",
+    "serve-favicon": "~2.3.2",
+    "winston": "2.3.1"
   }
 }
