@@ -3,5 +3,9 @@
   "host": "localhost",
   "db": "protondb",
   "dbuser": "protondb",
-  "dbpass": "protondb"
+  "dbpass": "protondb",
+  "directories": {
+    "index": "./routes/index",
+    "users": "./routes/users"
+  }
 }

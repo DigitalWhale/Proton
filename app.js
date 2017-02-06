@@ -3,25 +3,18 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const config = require('./config');
 let log = require('./libs/log')(module);
+let async = require('async');
 //const favicon = require('serve-favicon');
 //const logger = require('morgan');
 //const cookieParser = require('cookie-parser');
-//const index = require('./routes/index');
-//const users = require('./routes/users');
-
 let app = express();
 
 app.set("port", config.get("port"));
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
 
-//middleware
-app.use((req, res, next) => {
-  if(req.url == "/")
-      res.end("hello");
-  else
-      next();
-});
+let route = () => {
 
+};
 /*
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -34,16 +27,23 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', index);
-app.use('/users', users);
 */
 
+//Маршрутизатор. Загружает модуль маршрутизации для  каждой директории.
+async.forEachOf(config.get("directories"), (dir, name, callback) => {
+    log.debug(name + ":" + dir );
+    app.use("/" +  name, require(dir));
+}, (err) => {
+  if(err){
+    throw err;
+  }
+});
 
+//app.use("/index", require(config.get("directories:index")));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  let err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
